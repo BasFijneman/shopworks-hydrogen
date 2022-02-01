@@ -10,8 +10,6 @@
 //   </div>)
 // }
 
-
-
 import {
   Image,
   useShopQuery,
@@ -47,24 +45,21 @@ export default function Layout({children, hero}) {
 
   return (
     <LocalizationProvider>
-
-    <div className="fixed-nav transparent-nav">
-      <div className="min-h-screen max-w-screen text-gray-700 font-sans">
-        {/* TODO: Find out why Suspense needs to be here to prevent hydration errors. */}
-        <Suspense fallback={null}>
-          <Header collections={collections} storeName={storeName} />
-          <Cart />
-        </Suspense>
-        <main >
-          {hero}
-          <div className="mx-auto max-w-7xl p-4 md:py-5 md:px-8">
+      <div className="fixed-nav transparent-nav">
+        <div className="min-h-screen max-w-screen text-gray-700 font-sans">
+          {/* TODO: Find out why Suspense needs to be here to prevent hydration errors. */}
+          <Suspense fallback={null}>
+            <Header collections={collections} storeName={storeName} />
+            <Cart />
+          </Suspense>
+          <main>
+            {hero}
             {children}
-          </div>
-        </main>
-        <Collection1 />
-        <Footer collection={collections[0]} product={products[0]} />
+          </main>
+          <Collection1 />
+          <Footer collection={collections[0]} product={products[0]} />
+        </div>
       </div>
-    </div>
     </LocalizationProvider>
   );
 }
